@@ -3,6 +3,11 @@ body {
   background: #021425;
 }
 
+::selection {
+  background: #107bb9;
+  color: orangered;
+}
+
 .container {
   width: 550px;
   height: 550px;
@@ -124,6 +129,7 @@ body {
 }
 
 #lengthInput {
+  cursor: pointer;
   margin: 63px 0px 0;
 
   width: 170px;
@@ -205,3 +211,66 @@ body {
   font-style: italic;
   font-size: 13px;
 }
+
+/* @media all and (max-width: 480px) {
+  body {
+    width: 300px;
+    margin: 0 auto;
+  }
+
+  .container {
+    width: 300px;
+  }
+
+  #title {
+    width: 100%;
+
+    margin: 50px 0px 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  #message {
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+
+    margin-left: 5px;
+  }
+
+  #pass_btn {
+    width: 100px;
+    font-size: 12px;
+
+    margin-top: 20px;
+    margin-left: 100px;
+  }
+
+  #lengthInput {
+    transform: translate(-110%, 100%);
+  }
+
+  #text_info {
+    transform: translate(-560%, 80%);
+  }
+
+  #passCount {
+    transform: translate(-560%, 80%);
+  }
+
+  #line {
+    margin-top: 60px;
+    width: 200px;
+  }
+
+  .flex_btn {
+    display: flex;
+    gap: 50px;
+  }
+
+  #display_pass1 {
+    width: 150px;
+
+    font-size: 12px;
+  }
+} */
