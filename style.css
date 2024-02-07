@@ -1,6 +1,10 @@
 body {
-  margin: 0;
   background: #021425;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 ::selection {
@@ -11,31 +15,23 @@ body {
 .container {
   width: 550px;
   height: 550px;
-
-  margin-top: 170px;
-
-  margin-inline: auto;
   background: #1f2937;
   color: white;
-
   border: 5px solid white;
   border-radius: 15px;
   box-shadow: 5px 5px 20px black;
+  margin-inline: 2em;
 }
 
 #title {
   margin: 115px 52px 0;
-
   width: 354px;
   height: 80px;
-
   font-family: "Karla";
   font-style: normal;
   font-weight: 800;
   font-size: 40px;
   line-height: 40px;
-
-  /* or 100% */
   letter-spacing: -0.025em;
 }
 
@@ -47,41 +43,42 @@ body {
   margin: 10px 52px 0;
   width: 372px;
   height: 28px;
-
-  /* text-xl/leading-7/font-normal */
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
   line-height: 28px;
-
-  /* identical to box height, or 140% */
-
   /* Medium grey */
   color: #d5d4d8;
 }
 
-#pass_btn {
-  margin: 50px 52px 0;
-  cursor: pointer;
+.pass_sys {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 9px 17px 9px 15px;
-  gap: 12px;
+  gap: 2em;
+}
 
+.password-details {
+  margin-top: 3em;
+}
+
+.password-length {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+#pass_btn {
+  cursor: pointer;
   width: 191px;
   height: 42px;
-
   background: #10b981;
   border: none;
-
   font-family: "Inter";
   color: white;
   font-size: 1rem;
-
-  /* shadow/sm */
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
 }
@@ -92,46 +89,38 @@ body {
 }
 
 #line {
-  margin: 40px 52px 0;
-  width: 446px;
+  margin: 1.2em 52px 0;
   height: 0px;
-
   border: 1px solid #2f3e5388;
 }
 
 .flex_btn {
-  margin: 30px 52px 0;
+  margin: 1em 3.2em 0;
   display: flex;
   justify-content: space-between;
   text-align: center;
+  gap: 2em;
 }
 
 #display_pass1,
 #display_pass2 {
-  width: 211px;
-  height: 39px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 200px;
+  height: 1.5em;
   background: #273549;
-
   border: none;
   outline: none;
   border-radius: 6px;
-  color: #5def92;
-
+  color: rgb(255, 94, 0);
   font-size: 1rem;
   font-weight: 500;
-}
-
-.pass_sys {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em;
 }
 
 #lengthInput {
   cursor: pointer;
-  margin: 63px 0px 0;
-
   width: 170px;
   height: 42px;
 }
@@ -142,18 +131,13 @@ body {
   cursor: pointer;
   padding: 9px 17px 9px 15px;
   gap: 12px;
-
   width: 191px;
   height: 205x;
-
   background: #10b981;
   border: none;
-
   font-family: "Inter";
   color: white;
   font-size: 1rem;
-
-  /* shadow/sm */
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
 }
@@ -175,12 +159,8 @@ body {
 }
 
 .copyMe:hover::before {
-  position: absolute;
-  color: rgb(255, 94, 0);
-  content: "Copy me";
+  content: "Copy";
   font-family: "Inter";
-  font-size: 1rem;
-  letter-spacing: 1.5px;
   text-transform: uppercase;
   font-style: italic;
   color: #d3ddec;
@@ -189,13 +169,9 @@ body {
 #passCount {
   color: #5def92;
   font-family: "Inter";
-  transform: translate(50%, 77%);
 }
 
 #text_info {
-  position: absolute;
-  top: 48.2%;
-  left: 51.5%;
   font-family: "Inter";
   font-size: 13px;
   color: #5def92;
@@ -207,24 +183,38 @@ body {
   margin: 0 52px;
   font-family: "Inter";
   color: #4adf86;
-
   font-style: italic;
   font-size: 13px;
 }
 
-/* @media all and (max-width: 480px) {
+@media all and (max-width: 480px) {
   body {
     width: 300px;
     margin: 0 auto;
   }
 
+  .pass_sys {
+    margin-top: 1em;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .check_btn {
+    justify-content: space-around;
+    margin: 0;
+  }
+
+  .password-details {
+    margin-top: 1.5em;
+  }
+
   .container {
-    width: 300px;
+    width: 355px;
+    margin-inline: 2em;
   }
 
   #title {
     width: 100%;
-
     margin: 50px 0px 20px;
     font-size: 30px;
     text-align: center;
@@ -233,44 +223,18 @@ body {
   #message {
     text-align: center;
     width: 100%;
-    font-size: 12px;
-
+    font-size: 14px;
     margin-left: 5px;
   }
 
-  #pass_btn {
-    width: 100px;
-    font-size: 12px;
-
-    margin-top: 20px;
-    margin-left: 100px;
-  }
-
-  #lengthInput {
-    transform: translate(-110%, 100%);
-  }
-
-  #text_info {
-    transform: translate(-560%, 80%);
-  }
-
-  #passCount {
-    transform: translate(-560%, 80%);
-  }
-
-  #line {
-    margin-top: 60px;
-    width: 200px;
-  }
-
   .flex_btn {
-    display: flex;
-    gap: 50px;
+    gap: 0.5em;
+    justify-content: center;
+    margin-inline: 1em;
   }
 
-  #display_pass1 {
-    width: 150px;
-
+  #display_pass1,
+  #display_pass2 {
     font-size: 12px;
   }
-} */
+}

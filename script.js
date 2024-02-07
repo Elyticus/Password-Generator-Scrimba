@@ -14,10 +14,10 @@ const passTwo = document.getElementById("display_pass2");
 function generateCharacters(symbols = true, numbers = true) {
   let allCharacters = letters;
   if (symbols) {
-    allCharacters = allCharacters.concat(specialCharacters);
+    allCharacters += specialCharacters;
   }
   if (numbers) {
-    allCharacters = allCharacters.concat(numbersElement);
+    allCharacters += numbersElement;
   }
 
   const randomIndex = Math.floor(Math.random() * allCharacters.length);
@@ -27,18 +27,18 @@ function generateCharacters(symbols = true, numbers = true) {
 function generatePassword() {
   const includeSymbols = document.getElementById("includeSymbols").checked;
   const includeNumbers = document.getElementById("includeNumbers").checked;
-  const passowrdLength = document.getElementById("lengthInput").value;
+  const passwordLength = document.getElementById("lengthInput").value;
 
   let password1 = "";
   let password2 = "";
 
-  for (let i = 0; i < passowrdLength; i++) {
+  for (let i = 0; i < passwordLength; i++) {
     password1 += generateCharacters(includeSymbols, includeNumbers);
     password2 += generateCharacters(includeSymbols, includeNumbers);
   }
 
-  document.getElementById("display_pass1").textContent = password1;
-  document.getElementById("display_pass2").textContent = password2;
+  passOne.textContent = password1;
+  passTwo.textContent = password2;
 
   passOne.style.cursor = "pointer";
   passOne.classList.add("copyMe");
@@ -47,7 +47,6 @@ function generatePassword() {
   passTwo.classList.add("copyMe");
 }
 
-passwordButton.addEventListener("click", generateCharacters);
 passwordButton.addEventListener("click", generatePassword);
 
 function updatePasswordLength() {
@@ -55,13 +54,11 @@ function updatePasswordLength() {
   document.getElementById("passCount").textContent = lengthInput;
 }
 
-lengthInput.addEventListener("click", updatePasswordLength);
+lengthInput.addEventListener("input", updatePasswordLength);
 
-password1 = "";
-
-passOne.onclick = function () {
+passOne.addEventListener("click", function () {
   document.execCommand("copy");
-};
+});
 
 passOne.addEventListener("copy", function (e) {
   e.preventDefault();
@@ -74,13 +71,9 @@ passOne.addEventListener("copy", function (e) {
   }
 });
 
-document.getElementById("display_pass1").textContent = password1;
-
-password2 = "";
-
-passTwo.onclick = function () {
+passTwo.addEventListener("click", function () {
   document.execCommand("copy");
-};
+});
 
 passTwo.addEventListener("copy", function (p) {
   p.preventDefault();
@@ -92,5 +85,3 @@ passTwo.addEventListener("copy", function (p) {
     passTwo.style.cursor = "default";
   }
 });
-
-document.getElementById("display_pass2").textContent = password2;

@@ -23,16 +23,16 @@
 
   <body>
     <div class="container">
-      <div class="wrapper">
-        <h1 id="title">
-          Generate a <span class="color_green">random password</span>
-        </h1>
+      <h1 id="title">
+        Generate a <span class="color_green">random password</span>
+      </h1>
 
-        <p id="message">Never use an insecure password again</p>
+      <p id="message">Never use an insecure password again</p>
 
-        <div class="pass_sys">
-          <button id="pass_btn">Generate passwords</button>
+      <div class="pass_sys">
+        <button id="pass_btn">Generate passwords</button>
 
+        <div class="password-details">
           <input
             placeholder="Password Length"
             type="range"
@@ -42,17 +42,18 @@
             value="10"
           />
 
-          <p id="text_info">Password Length</p>
-
-          <p id="passCount">8</p>
+          <div class="password-length">
+            <p id="text_info">Password Length</p>
+            <p id="passCount">8</p>
+          </div>
         </div>
+      </div>
 
-        <hr id="line" />
+      <hr id="line" />
 
-        <div class="flex_btn">
-          <p id="display_pass1"></p>
-          <p id="display_pass2"></p>
-        </div>
+      <div class="flex_btn">
+        <p id="display_pass1"></p>
+        <p id="display_pass2"></p>
       </div>
 
       <div class="check_btn">
