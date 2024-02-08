@@ -78,20 +78,17 @@ function updatePasswordLength() {
 lengthInput.addEventListener("input", updatePasswordLength);
 
 function copyToClipboard(element) {
-  navigator.clipboard.writeText(element.textContent).then(
-    () => {
-      // No need to clear text as it's hidden on mouseout
-    },
-    (err) => {
-      console.error("Async: Could not copy text:", err);
-    }
-  );
+  navigator.clipboard.writeText(element.textContent).then((err) => {
+    console.error("Async: Could not copy text:", err);
+  });
 }
 
 document.addEventListener("click", function (e) {
   if (e.target === passOne) {
     copyToClipboard(passOne);
+    passOne.innerText = "";
   } else if (e.target === passTwo) {
     copyToClipboard(passTwo);
+    passTwo.innerText = "";
   }
 });
