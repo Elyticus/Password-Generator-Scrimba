@@ -2,14 +2,20 @@ const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
 const uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const numbersElement = "0123456789";
 const specialCharacters = "!@#$%^&*()_-+=<>?";
-
 const letters = lowercaseLetters + uppercaseLetters;
-
 const passwordButton = document.getElementById("pass_btn");
 const lengthInput = document.getElementById("lengthInput");
-
 const passOne = document.getElementById("display_pass1");
 const passTwo = document.getElementById("display_pass2");
+
+// Function to set input slider back to 8
+function resetInputSlider() {
+  lengthInput.value = 8;
+  document.getElementById("passCount").textContent = lengthInput.value;
+}
+
+// Call the function when the page is loaded
+window.addEventListener("load", resetInputSlider);
 
 function generateCharacters(symbols = true, numbers = true) {
   let allCharacters = letters;
@@ -27,7 +33,7 @@ function generateCharacters(symbols = true, numbers = true) {
 function generatePassword() {
   const includeSymbols = document.getElementById("includeSymbols").checked;
   const includeNumbers = document.getElementById("includeNumbers").checked;
-  const passwordLength = document.getElementById("lengthInput").value;
+  const passwordLength = lengthInput.value;
 
   let password1 = "";
   let password2 = "";
@@ -37,51 +43,55 @@ function generatePassword() {
     password2 += generateCharacters(includeSymbols, includeNumbers);
   }
 
-  passOne.textContent = password1;
-  passTwo.textContent = password2;
+  // Store original passwords for copying
+  const originalPass1 = password1;
+  const originalPass2 = password2;
+
+  passOne.textContent = "Copy me";
+  passTwo.textContent = "Copy me";
+
+  // Add hover listeners to display passwords and copy
+  passOne.addEventListener("mouseover", () => {
+    passOne.textContent = originalPass1;
+  });
+  passOne.addEventListener("mouseout", () => {
+    passOne.textContent = "Copy me";
+  });
+
+  passTwo.addEventListener("mouseover", () => {
+    passTwo.textContent = originalPass2;
+  });
+  passTwo.addEventListener("mouseout", () => {
+    passTwo.textContent = "Copy me";
+  });
 
   passOne.style.cursor = "pointer";
-  passOne.classList.add("copyMe");
-
   passTwo.style.cursor = "pointer";
-  passTwo.classList.add("copyMe");
 }
 
 passwordButton.addEventListener("click", generatePassword);
 
 function updatePasswordLength() {
-  const lengthInput = document.getElementById("lengthInput").value;
-  document.getElementById("passCount").textContent = lengthInput;
+  document.getElementById("passCount").textContent = lengthInput.value;
 }
 
 lengthInput.addEventListener("input", updatePasswordLength);
 
-passOne.addEventListener("click", function () {
-  document.execCommand("copy");
-});
+function copyToClipboard(element) {
+  navigator.clipboard.writeText(element.textContent).then(
+    () => {
+      // No need to clear text as it's hidden on mouseout
+    },
+    (err) => {
+      console.error("Async: Could not copy text:", err);
+    }
+  );
+}
 
-passOne.addEventListener("copy", function (e) {
-  e.preventDefault();
-
-  if (e.clipboardData) {
-    e.clipboardData.setData("text/plain", passOne.textContent);
-
-    passOne.classList.remove("copyMe");
-    passOne.style.cursor = "default";
-  }
-});
-
-passTwo.addEventListener("click", function () {
-  document.execCommand("copy");
-});
-
-passTwo.addEventListener("copy", function (p) {
-  p.preventDefault();
-
-  if (p.clipboardData) {
-    p.clipboardData.setData("text/plain", passTwo.textContent);
-
-    passTwo.classList.remove("copyMe");
-    passTwo.style.cursor = "default";
+document.addEventListener("click", function (e) {
+  if (e.target === passOne) {
+    copyToClipboard(passOne);
+  } else if (e.target === passTwo) {
+    copyToClipboard(passTwo);
   }
 });

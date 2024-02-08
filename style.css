@@ -8,7 +8,7 @@ body {
 }
 
 ::selection {
-  background: #107bb9;
+  background: #a1fa1b;
   color: orangered;
 }
 
@@ -48,7 +48,6 @@ body {
   font-weight: 400;
   font-size: 20px;
   line-height: 28px;
-  /* Medium grey */
   color: #d5d4d8;
 }
 
@@ -125,45 +124,8 @@ body {
   height: 42px;
 }
 
-#button1,
-#button2 {
-  margin: 50px 52px 0;
-  cursor: pointer;
-  padding: 9px 17px 9px 15px;
-  gap: 12px;
-  width: 191px;
-  height: 205x;
-  background: #10b981;
-  border: none;
-  font-family: "Inter";
-  color: white;
-  font-size: 1rem;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
-  border-radius: 6px;
-}
-
-#button2 {
-  margin-left: 240px;
-}
-
-#button1:hover,
-#button2:hover {
-  background: rgb(255, 94, 0);
-  transition: 0.1s ease-in-out;
-}
-
-#display_pass1:hover,
-#display_pass2:hover {
-  background: #273549;
-  color: transparent;
-}
-
-.copyMe:hover::before {
-  content: "Copy";
-  font-family: "Inter";
-  text-transform: uppercase;
-  font-style: italic;
-  color: #d3ddec;
+p[title] {
+  background-color: red;
 }
 
 #passCount {
